@@ -1,42 +1,26 @@
-import DownloadButton from './DownloadButton'
+// import DownloadButton from './DownloadButton'
 import './App.css'
+import { FiAlignJustify, FiX  } from "react-icons/fi";
 import image from './assets/me.png'
 import Typewriter from "typewriter-effect"
+import Nav from './components/Nav';
+import React, {useState} from 'react'
+import Home from './pages/Home';
+import About from './pages/About';
+import Skills from './pages/Skills';
+import Work from './pages/Work';
 function App() {
+  const [active, setactive] = useState(false)
+  const handleclick =()=>{
+    setactive(!active)
+  }
   return (
-    <div className='container'>
-      <nav>
-        <h3><span>Abayomi</span> Aremo</h3>
-        <ul>
-          <li><a href='#'>Home</a></li>
-          <li><a href='#'>About</a></li>
-          <li><a href='#'>Services</a></li>
-          <li><a href='#'>Portfolio</a></li>
-          <li><a href='#'>Contact</a></li>
-        </ul>
-      </nav>
-      <section>
-        <div>
-          <h3>Hello, i am</h3>
-          <h2>Abayomi Aremo</h2>
-          <h3 className='type'>And i am a
-            <Typewriter
-            className='Typewriter'
-            options={{
-              strings: ["Web Developer","Front-end-Engineer"],
-              autoStart: true,
-              loop: true,
-            }}/></h3>
-          <p>Hi i am Abayomi Aremo, a passionate web-developer
-            specializing in translating design consepts into
-            seamless and interactive web experiences using
-            HTML, CSS, and JavaScript. React tailwind etc...
-          </p>
-          <DownloadButton />
-        </div>
-        <img src={image} alt="me" />
-        
-      </section>
+    <div className='bg-[#0B3F30] text-gray-100'>
+    <Nav />
+    <Home />
+    <About />
+    <Skills />
+    <Work />
     </div>
   )
 }
