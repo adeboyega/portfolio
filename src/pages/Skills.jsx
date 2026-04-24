@@ -4,7 +4,7 @@ import AnimatedSection from '../components/AnimatedSection'
 const skillGroups = [
   {
     category: 'Languages & Frameworks',
-    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'React.js', 'Next.js', 'React Native', 'Node.js', 'Express.js'],
+    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'React.js', 'Next.js', 'React Native', 'Angular', 'Svelte.js', 'Node.js', 'Express.js'],
   },
   {
     category: 'Architecture & Systems',
