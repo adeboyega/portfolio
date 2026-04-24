@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
-import photo from '../abayomi.png'
+import photo from '../abayomi_opt.jpg'
 
 export default function About() {
   return (
@@ -22,12 +22,12 @@ export default function About() {
               transition={{ type: 'spring', bounce: 0 }}
               className="shrink-0 mx-auto md:mx-0"
             >
-              <div className="relative w-52 h-52 md:w-64 md:h-64">
+              <div className="relative w-44 md:w-56">
                 <div className="absolute inset-0 rounded-2xl bg-accent-gold/20 blur-xl" />
                 <img
                   src={photo}
                   alt="Abayomi Aremo"
-                  className="relative w-full h-full object-cover rounded-2xl border border-dark-border2 shadow-2xl"
+                  className="relative w-full h-auto rounded-2xl border border-dark-border2 shadow-2xl object-contain"
                 />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-accent-gold/30" />
               </div>
