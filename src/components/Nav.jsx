@@ -1,56 +1,132 @@
-import {React, useState} from 'react'
-import {
-    FaBars,
-    FaTimes,
-    FaGithub,
-    FaLinkedin,
-    FaFacebook,
-    FaLinkedinIn,
-  } from 'react-icons/fa';
-  import { CiMail } from "react-icons/ci";
-  import { MdContacts } from "react-icons/md";
-import logo from '../assets/Bayologo.png'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FiGithub, FiLinkedin, FiMail, FiMenu, FiX } from 'react-icons/fi'
 
-const Nav = () => {
-    const [active, setactive] = useState(false)
-    const handleclick =()=>{
-        setactive(!active)
-    }  
-    return (
-    <div className='flex fixed justify-between w-full bg-[#0a192f] md:bg-[#0B3F30] px-4'>
-        {/* <img src={logo} alt="Bayologo" style={{width: '150px'}}/> */}
-        <h1 className='h-10 bg-[#8892b0] w-10 flex items-center justify-center p-9 text-[#0B3F30] rounded-full mt-4 font-bold '>TBA</h1>
-        <div className='flex justify-center items-center'>
-        <ul className='hidden md:flex justify-center gap-2 items-center'>
-            <li className='hover:text-[#8892b0] duration-300'>Home</li>
-            <li className='hover:text-[#8892b0] duration-300'>About</li>
-            <li className='hover:text-[#8892b0] duration-300'>Skills</li>
-            <li className='hover:text-[#8892b0] duration-300'>Work</li>
-            <li className='hover:text-[#8892b0] duration-300'>Contact</li>
-        </ul>
-        {/* hambuger */}
-        <div onClick={handleclick} className='flex md:hidden px-2 z-10'>
-        {active ? <FaTimes size={30} /> : <FaBars size={30}/>}
-        </div>
-        {/* mobile menu */}
-        <ul className={active? 'absolute top-0 left-0 h-screen w-full bg-[#0a192f] md:bg-[#0B3F30] flex flex-col justify-center items-center text-[#8892b0]' : 'hidden'}>
-            <li className='py-6 text-4xl hover:text-pink-600'>Home</li>
-            <li className='py-6 text-4xl hover:text-pink-600'>About</li>
-            <li className='py-6 text-4xl hover:text-pink-600'>Skills</li>
-            <li className='py-6 text-4xl hover:text-pink-600'>Work</li>
-            <li className='py-6 text-4xl hover:text-pink-600'>Contact</li>
-        </ul>
-        </div>
-        <ul className='hidden fixed flex-col top-[35%] left-0 text-gray-50 sm:flex'>
-        <li className='flex justify-center items-center gap-2 h-[60px] w-[160px] ml-[-100px] hover:ml-[-10px] duration-300  bg-blue-600'> <a className='flex justify-between items-center w-full text-gray-300' href="/">Linkedin <FaLinkedin size={30}/></a></li>
-            <li className='flex justify-center items-center  h-[60px] w-[160px] ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]'> <a className='flex justify-between items-center w-full text-gray-300' href="/">Github <FaGithub size={30} /></a></li>
-            <li className='flex justify-center items-center gap-2 h-[60px] w-[160px] ml-[-100px] hover:ml-[-10px] duration-300 bg-[#565f69]'> <a className='flex justify-between items-center w-full text-gray-300' href="/">Mail  <CiMail size={30}/></a></li>
-            <li className='flex justify-center items-center h-[60px] w-[160px] ml-[-100px] hover:ml-[-10px] duration-300 bg-[#6fc2b0]'> <a className='flex justify-between items-center w-full text-gray-300' href="/">Resume <MdContacts size={30} /></a></li>
-            
-        </ul>
-        
-    </div>
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+]
+
+export default function Nav() {
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <>
+      <motion.header
+        className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4"
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5, type: 'spring', bounce: 0 }}
+      >
+        <nav className={`flex items-center gap-2 px-5 py-2.5 rounded-full border border-dark-border2 backdrop-blur-md transition-all duration-300 ${
+          scrolled ? 'bg-black/80 shadow-lg shadow-black/40' : 'bg-dark-card/70'
+        }`}>
+          <a href="#home" className="font-mono text-sm text-accent-gold font-semibold mr-3">
+            {'<AJ/>'}
+          </a>
+
+          <div className="hidden md:flex items-center gap-5">
+            {navLinks.map(link => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-xs text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="hidden md:flex items-center gap-3 ml-3 border-l border-dark-border2 pl-4">
+            <motion.a
+              href="https://github.com/bayomiaremo"
+              target="_blank" rel="noopener noreferrer"
+              whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.9 }}
+              className="text-text-secondary hover:text-text-primary transition-colors"
+            >
+              <FiGithub size={15} />
+            </motion.a>
+            <motion.a
+              href="https://linkedin.com/in/abayomiaremo"
+              target="_blank" rel="noopener noreferrer"
+              whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.9 }}
+              className="text-text-secondary hover:text-text-primary transition-colors"
+            >
+              <FiLinkedin size={15} />
+            </motion.a>
+            <motion.a
+              href="mailto:abayomiaremo0@gmail.com"
+              whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.9 }}
+              className="text-text-secondary hover:text-text-primary transition-colors"
+            >
+              <FiMail size={15} />
+            </motion.a>
+          </div>
+
+          <button
+            className="md:hidden text-text-secondary ml-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
+          </button>
+        </nav>
+      </motion.header>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 bg-dark-bg/97 backdrop-blur-md flex flex-col items-center justify-center gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {navLinks.map((link, i) => (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                className="text-2xl font-mono text-text-primary hover:text-accent-gold transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.07 }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </motion.a>
+            ))}
+            <div className="flex gap-6 mt-4">
+              {[
+                { href: 'https://github.com/bayomiaremo', icon: <FiGithub size={20} /> },
+                { href: 'https://linkedin.com/in/abayomiaremo', icon: <FiLinkedin size={20} /> },
+                { href: 'mailto:abayomiaremo0@gmail.com', icon: <FiMail size={20} /> },
+              ].map(({ href, icon }, i) => (
+                <motion.a
+                  key={href}
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="text-text-secondary hover:text-text-primary transition-colors"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 + i * 0.05 }}
+                >
+                  {icon}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
-
-export default Nav
