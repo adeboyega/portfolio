@@ -4,23 +4,27 @@ import AnimatedSection from '../components/AnimatedSection'
 const skillGroups = [
   {
     category: 'Languages & Frameworks',
-    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'React.js', 'Next.js', 'React Native', 'Angular', 'Svelte.js', 'Node.js', 'Express.js'],
+    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'React.js', 'Next.js', 'React Native', 'Angular', 'Svelte.js', 'Node.js', 'Express.js', 'NestJS', 'FastAPI'],
+  },
+  {
+    category: 'Backend & APIs',
+    skills: ['REST API Design', 'GraphQL', 'WebSockets', 'Socket.io', 'JWT / OAuth', 'Webhooks', 'Paystack Integration', 'Third-party API Integration', 'Nginx', 'PM2'],
+  },
+  {
+    category: 'Databases & Storage',
+    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'SQL', 'NoSQL', 'Mongoose', 'Prisma', 'Database Design', 'Redux Toolkit'],
   },
   {
     category: 'Architecture & Systems',
-    skills: ['Microservices', 'REST APIs', 'System Design', 'SaaS Platforms', 'Distributed Systems'],
+    skills: ['Microservices', 'System Design', 'SaaS Platforms', 'Distributed Systems', 'Event-Driven Architecture', 'API Gateway', 'Load Balancing', 'Caching Strategies'],
   },
   {
     category: 'Cloud & DevOps',
-    skills: ['AWS Lambda', 'Google Cloud', 'Docker', 'CI/CD', 'Cloud Services'],
-  },
-  {
-    category: 'Data & State Management',
-    skills: ['SQL', 'NoSQL', 'MongoDB', 'Database Design', 'Redux Toolkit'],
+    skills: ['AWS Lambda', 'AWS S3', 'Google Cloud', 'Docker', 'CI/CD', 'Linux', 'Shell Scripting', 'Server Administration'],
   },
   {
     category: 'Practices',
-    skills: ['Agile Development', 'Unit Testing', 'Performance Optimization', 'Code Review', 'Team Leadership'],
+    skills: ['Agile Development', 'Unit Testing', 'Performance Optimization', 'Code Review', 'Team Leadership', 'Technical Documentation', 'Security Best Practices'],
   },
 ]
 
