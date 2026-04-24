@@ -1,26 +1,24 @@
-// import DownloadButton from './DownloadButton'
 import './App.css'
-import { FiAlignJustify, FiX  } from "react-icons/fi";
-import image from './assets/me.png'
-import Typewriter from "typewriter-effect"
-import Nav from './components/Nav';
-import React, {useState} from 'react'
-import Home from './pages/Home';
-import About from './pages/About';
-import Skills from './pages/Skills';
-import Work from './pages/Work';
+import Nav from './components/Nav'
+import Home from './pages/Home'
+import About from './pages/About'
+import Skills from './pages/Skills'
+import Experience from './pages/Experience'
+import Work from './pages/Work'
+import Contact from './pages/Contact'
+
 function App() {
-  const [active, setactive] = useState(false)
-  const handleclick =()=>{
-    setactive(!active)
-  }
   return (
-    <div className='bg-[#0B3F30] text-gray-100'>
-    <Nav />
-    <Home />
-    <About />
-    <Skills />
-    <Work />
+    <div className="bg-dark-bg text-text-primary min-h-screen">
+      <Nav />
+      <main>
+        <Home />
+        <About />
+        <Skills />
+        <Experience />
+        <Work />
+        <Contact />
+      </main>
     </div>
   )
 }

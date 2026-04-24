@@ -1,31 +1,108 @@
-import React from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { motion } from 'framer-motion'
+import Typewriter from 'typewriter-effect'
+import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 
-const Home = () => {
-	return (
-		<div className="flex h-screen w-full bg-[#0a192f] md:bg-[#0B3F30] text-gray-200 justify-center items-center">
-			<div className="w-[70%] flex flex-col justify-center mt-20 gap-2 ">
-				<p className="text-sm text-gray-400">Hi my name is</p>
-				<h1 className="text-4xl sm:text-7xl font-bold text-[#ccd6f6]">
-					Abayomi Aremo James
-				</h1>
-				<h1 className="text-4xl sm:text-7xl font-bold text-[#8892b0]">
-					I am a Full Stack Developer.🤞💻
-				</h1>
-				<p className="text-[#8892b0] max-w-[700px] text-sm">
-					i am a fullstack developer speciaizing in building (and occasionally
-					desiging) exceptional digital experiences. Currently, im focused on
-					building responsive full-stack web applications.
-				</p>
-        <div>
-        <button className="text-white border-2 px-6 py-3 my-2 flex items-center hover:bg-pink-600 hover:border-pink-600">
-					View work <span className="hover:rotate-90 duration-300"><FaArrowRight className="ml-3" /></span>
-				</button>
-        </div>
-				
-			</div>
-		</div>
-	);
-};
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+  },
+}
 
-export default Home;
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 100, damping: 20 },
+  },
+}
+
+export default function Home() {
+  return (
+    <section id="home" className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-32 pt-24 pb-20">
+      <motion.div variants={container} initial="hidden" animate="visible" className="max-w-4xl">
+        <motion.p variants={item} className="font-mono text-accent-gold text-sm mb-4 tracking-widest">
+          Hi, my name is
+        </motion.p>
+
+        <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold text-text-primary leading-tight mb-2">
+          Abayomi Aremo.
+        </motion.h1>
+
+        <motion.div variants={item} className="text-3xl md:text-5xl font-bold text-text-secondary leading-tight mb-8 h-14 md:h-16">
+          <Typewriter
+            options={{
+              strings: ['Full-Stack Developer.', 'Technical Lead.', 'Systems Architect.'],
+              autoStart: true,
+              loop: true,
+              cursor: '|',
+              delay: 55,
+              deleteSpeed: 35,
+            }}
+          />
+        </motion.div>
+
+        <motion.p variants={item} className="text-text-secondary max-w-lg leading-relaxed mb-10 text-sm md:text-base">
+          Software Engineer and Technical Lead specializing in scalable SaaS platforms,
+          microservices architectures, and production-ready systems. Based in Abuja, Nigeria.
+          Supporting{' '}
+          <span className="text-text-primary font-medium">2000+ active users</span>{' '}
+          across HR, fintech, e-commerce, and asset management.
+        </motion.p>
+
+        <motion.div variants={item} className="flex flex-wrap gap-3">
+          <motion.a
+            href="#projects"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-6 py-3 border border-accent-gold text-accent-gold font-mono text-sm rounded-lg hover:bg-accent-gold hover:text-dark-bg transition-all duration-200"
+          >
+            View Projects
+          </motion.a>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-6 py-3 bg-dark-card border border-dark-border2 text-text-primary font-mono text-sm rounded-lg hover:border-text-secondary transition-all duration-200"
+          >
+            Get In Touch
+          </motion.a>
+        </motion.div>
+
+        <motion.div variants={item} className="flex gap-5 mt-12">
+          {[
+            { href: 'https://github.com/bayomiaremo', icon: <FiGithub size={20} />, label: 'GitHub' },
+            { href: 'https://linkedin.com/in/abayomiaremo', icon: <FiLinkedin size={20} />, label: 'LinkedIn' },
+            { href: 'mailto:abayomiaremo0@gmail.com', icon: <FiMail size={20} />, label: 'Email' },
+          ].map(({ href, icon, label }) => (
+            <motion.a
+              key={label}
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              whileHover={{ scale: 1.15, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-text-secondary hover:text-accent-gold transition-colors"
+              title={label}
+            >
+              {icon}
+            </motion.a>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8 }}
+      >
+        <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}>
+          <FiArrowDown className="text-text-secondary" size={18} />
+        </motion.div>
+      </motion.div>
+    </section>
+  )
+}
