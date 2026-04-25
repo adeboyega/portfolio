@@ -49,7 +49,7 @@ export default function Nav() {
 
           <div className="hidden md:flex items-center gap-3 ml-3 border-l border-dark-border2 pl-4">
             <motion.a
-              href="https://github.com/bayomiaremo"
+              href="https://github.com/adeboyega"
               target="_blank" rel="noopener noreferrer"
               whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.9 }}
               className="text-text-secondary hover:text-text-primary transition-colors"
@@ -106,7 +106,7 @@ export default function Nav() {
             ))}
             <div className="flex gap-6 mt-4">
               {[
-                { href: 'https://github.com/bayomiaremo', icon: <FiGithub size={20} /> },
+                { href: 'https://github.com/adeboyega', icon: <FiGithub size={20} /> },
                 { href: 'https://linkedin.com/in/abayomiaremo', icon: <FiLinkedin size={20} /> },
                 { href: 'mailto:abayomiaremo0@gmail.com', icon: <FiMail size={20} /> },
               ].map(({ href, icon }, i) => (

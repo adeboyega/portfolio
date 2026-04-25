@@ -3,7 +3,7 @@ import AnimatedSection from '../components/AnimatedSection'
 import { FiGithub, FiLinkedin, FiMail, FiPhone } from 'react-icons/fi'
 
 const socials = [
-  { href: 'https://github.com/bayomiaremo', icon: <FiGithub size={20} />, label: 'GitHub' },
+  { href: 'https://github.com/adeboyega', icon: <FiGithub size={20} />, label: 'GitHub' },
   { href: 'https://linkedin.com/in/abayomiaremo', icon: <FiLinkedin size={20} />, label: 'LinkedIn' },
   { href: 'mailto:abayomiaremo0@gmail.com', icon: <FiMail size={20} />, label: 'Email' },
   { href: 'tel:+2349071637078', icon: <FiPhone size={20} />, label: 'Phone' },
