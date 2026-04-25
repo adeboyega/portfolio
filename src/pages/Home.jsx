@@ -73,7 +73,7 @@ export default function Home() {
 
         <motion.div variants={item} className="flex gap-5 mt-12">
           {[
-            { href: 'https://github.com/bayomiaremo', icon: <FiGithub size={20} />, label: 'GitHub' },
+            { href: 'https://github.com/adeboyega', icon: <FiGithub size={20} />, label: 'GitHub' },
             { href: 'https://linkedin.com/in/abayomiaremo', icon: <FiLinkedin size={20} />, label: 'LinkedIn' },
             { href: 'mailto:abayomiaremo0@gmail.com', icon: <FiMail size={20} />, label: 'Email' },
           ].map(({ href, icon, label }) => (
