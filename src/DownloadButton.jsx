@@ -1,5 +1,4 @@
 // DownloadButton.js
-import React from 'react';
 import cv from './assets/cv.png'
 const DownloadButton = () => {
     const handleDownload = () => {

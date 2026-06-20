@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiGithub, FiLinkedin, FiMail, FiMenu, FiX } from 'react-icons/fi'
+import CVModal from './CVModal'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -13,6 +14,7 @@ const navLinks = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [cvOpen, setCvOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -71,6 +73,12 @@ export default function Nav() {
             >
               <FiMail size={15} />
             </motion.a>
+            <button
+              onClick={() => setCvOpen(true)}
+              className="px-3.5 py-1.5 bg-accent-gold/10 border border-accent-gold/30 hover:bg-accent-gold hover:text-dark-bg text-xs text-accent-gold font-mono rounded-full font-bold ml-3 transition-all duration-200"
+            >
+              Resume
+            </button>
           </div>
 
           <button
@@ -104,6 +112,18 @@ export default function Nav() {
                 {link.label}
               </motion.a>
             ))}
+            <motion.button
+              onClick={() => {
+                setMenuOpen(false)
+                setCvOpen(true)
+              }}
+              className="text-2xl font-mono text-accent-gold hover:text-text-primary transition-colors border border-accent-gold/40 px-6 py-2 rounded-full mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.07 }}
+            >
+              Resume
+            </motion.button>
             <div className="flex gap-6 mt-4">
               {[
                 { href: 'https://github.com/adeboyega', icon: <FiGithub size={20} /> },
@@ -127,6 +147,8 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <CVModal isOpen={cvOpen} onClose={() => setCvOpen(false)} />
     </>
   )
 }

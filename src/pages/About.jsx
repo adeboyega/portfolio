@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/AnimatedSection'
 import photo from '../abayomi_opt.jpg'
+import CVModal from '../components/CVModal'
 
 export default function About() {
+  const [cvOpen, setCvOpen] = useState(false)
   return (
     <section id="about" className="py-24 px-6 md:px-16 lg:px-32">
       <div className="max-w-4xl mx-auto">
@@ -39,13 +42,13 @@ export default function About() {
           <AnimatedSection delay={0.15} className="flex-1">
             <div className="space-y-4 text-text-secondary leading-relaxed text-sm md:text-base">
               <p>
-                I'm a Software Engineer and Technical Lead based in{' '}
+                I&apos;m a Software Engineer and Technical Lead based in{' '}
                 <span className="text-text-primary">Abuja, Nigeria</span>, with experience
                 designing and scaling SaaS platforms across HR, fintech, e-commerce, and
                 asset management domains.
               </p>
               <p>
-                I've built and deployed systems supporting{' '}
+                I&apos;ve built and deployed systems supporting{' '}
                 <span className="text-text-primary font-medium">2000+ active users</span>,
                 improving operational efficiency, reducing fraud, and enabling business
                 automation.
@@ -62,6 +65,22 @@ export default function About() {
                 </span>{' '}
                 at ABU DLC while serving as Head of IT & Lead Engineer at Casalavoro Limited.
               </p>
+              
+              <div className="flex flex-wrap gap-3 mt-6">
+                <button
+                  onClick={() => setCvOpen(true)}
+                  className="px-5 py-2.5 bg-accent-gold text-dark-bg font-mono text-xs font-bold rounded-lg hover:bg-yellow-400 transition-all duration-200"
+                >
+                  View Resume
+                </button>
+                <a
+                  href="/CV.docx"
+                  download="Abayomi_Aremo_CV.docx"
+                  className="px-5 py-2.5 bg-dark-card border border-dark-border2 text-text-primary font-mono text-xs font-semibold rounded-lg hover:border-text-secondary transition-all duration-200"
+                >
+                  Download CV (.docx)
+                </a>
+              </div>
             </div>
           </AnimatedSection>
         </div>
@@ -104,6 +123,8 @@ export default function About() {
           </div>
         </AnimatedSection>
       </div>
+
+      <CVModal isOpen={cvOpen} onClose={() => setCvOpen(false)} />
     </section>
   )
 }

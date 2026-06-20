@@ -14,13 +14,13 @@ export default function Contact() {
     <section id="contact" className="py-24 px-6 md:px-16 lg:px-32">
       <div className="max-w-xl mx-auto text-center">
         <AnimatedSection>
-          <span className="font-mono text-accent-gold text-sm block mb-4">05. What's Next?</span>
+          <span className="font-mono text-accent-gold text-sm block mb-4">05. What&apos;s Next?</span>
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">Get In Touch</h2>
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
           <p className="text-text-secondary leading-relaxed mb-10 text-sm md:text-base">
-            I'm open to new opportunities and collaborations. Whether you have a project in mind,
+            I&apos;m open to new opportunities and collaborations. Whether you have a project in mind,
             a question, or just want to connect — feel free to reach out.
           </p>
         </AnimatedSection>
